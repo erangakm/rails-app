@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+  # logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   test "should get home" do
     get root_url
     assert_response :success
@@ -14,7 +14,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get about" do
     get about_us_url
-    logger.info "Stuff"
+    # logger.info "Stuff"
     assert_response :success
   end
 
