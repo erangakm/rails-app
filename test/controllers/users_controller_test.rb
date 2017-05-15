@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+
   setup do
     @user = users(:one)
+    log_in_as(@user)
   end
 
   test "should get index" do
@@ -17,7 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { email: @user.email, first_name: @user.first_name, last_name: @user.last_name, password_digest: @user.password_digest } }
+      post users_url, params: { user: { email: "dog@gmail.com", first_name: @user.first_name, last_name: @user.last_name, password: "MyString", password_confirmation: "MyString" } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -34,7 +37,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { email: @user.email, first_name: @user.first_name, last_name: @user.last_name, password_digest: @user.password_digest } }
+    patch user_url(@user), params: { user: { email: "lololol@live.com", first_name: @user.first_name, last_name: @user.last_name, password: "MyString", password_confirmation: "MyString" } }
+    logger.info edit_user_url(@user)
     assert_redirected_to user_url(@user)
   end
 
