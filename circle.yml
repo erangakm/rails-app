@@ -1,5 +1,7 @@
 deployment:
   staging:
     branch: testing-2
-    heroku:
-      appname: desolate-escarpment-18459
+    commands:
+      # appname: desolate-escarpment-18459
+      - git push git@heroku.com:desolate-escarpment-18459.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rails db:migrate --app desolate-escarpment-18459
