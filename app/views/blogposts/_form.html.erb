@@ -1,0 +1,22 @@
+<%= form_for(blogpost, :url => user_blogposts_path(@user)) do |f| %>
+  <% if blogpost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blogpost.errors.count, "error") %> prohibited this blogpost from being saved:</h2>
+
+      <ul>
+      <% blogpost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Publish" %>
+  </div>
+<% end %>
