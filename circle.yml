@@ -1,5 +1,5 @@
 deployment:
   staging:
-    branch: master
+    branch: testing-2
     heroku:
       appname: desolate-escarpment-18459
