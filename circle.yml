@@ -1,6 +1,6 @@
 deployment:
   staging:
-    branch: testing-2
+    branch: master
     commands:
       # appname: desolate-escarpment-18459
       - git push git@heroku.com:desolate-escarpment-18459.git $CIRCLE_SHA1:refs/heads/master
